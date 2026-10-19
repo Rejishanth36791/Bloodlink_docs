@@ -1,0 +1,45 @@
+# Environment & secrets
+.env
+*.env
+*.keystore
+*.jks
+google-services.json
+GoogleService-Info.plist
+firebase-service-account.json
+
+# Java & Maven
+backend/target/
+backend/.mvn/wrapper/maven-wrapper.jar
+*.class
+.factorypath
+.project
+.classpath
+.settings/
+*.log
+
+# Python
+ai-service/__pycache__/
+ai-service/*/__pycache__/
+ai-service/*/*/__pycache__/
+*.py[cod]
+*$py.class
+ai-service/.venv/
+ai-service/venv/
+ai-service/.pytest_cache/
+ai-service/.coverage
+
+# Flutter & Dart
+mobile/.dart_tool/
+mobile/.flutter-plugins
+mobile/.flutter-plugins-dependencies
+mobile/build/
+mobile/.packages
+mobile/.pub-cache/
+mobile/.pub/
+
+# IDE & OS
+.idea/
+*.iml
+.vscode/
+Thumbs.db
+.DS_Store

@@ -1,0 +1,25 @@
+# National Blood Transfusion Service (NBTS) Sri Lanka Eligibility Rules
+version: "1.0.0-nbts-sl"
+
+general:
+  min_age: 18
+  max_age: 60
+  min_weight_kg: 50.0
+  cooldown_days: 112
+  min_hemoglobin_male: 13.0
+  min_hemoglobin_female: 12.5
+
+deferral_rules:
+  fever_infection_days: 14
+  aspirin_hours: 48
+  antibiotics_days: 7
+  endemic_travel_days: 28
+  tattoo_piercing_months: 12
+  major_surgery_months: 12
+  dental_extraction_days: 3
+  pregnancy_nursing_months: 6
+
+scoring_weights:
+  vital_signs: 30
+  cadence: 30
+  health_screening: 40
