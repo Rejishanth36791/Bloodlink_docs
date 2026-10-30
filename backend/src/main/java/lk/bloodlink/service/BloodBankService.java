@@ -12,11 +12,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
+
 
 @Slf4j
 @Service
@@ -134,7 +134,7 @@ public class BloodBankService {
         }
 
         inv.setUnitsAvailable(newUnits);
-        inventoryRepository.save(inv);
+        inv = inventoryRepository.save(inv);
 
         // Record ledger movement
         InventoryMovement movement = InventoryMovement.builder()
@@ -181,12 +181,13 @@ public class BloodBankService {
             donorRepository.save(donor);
 
             // Update inventory
-            adjustInventory(bankUser, new BankDtos.InventoryAdjustment() {{
-                setBloodType(donor.getBloodType());
-                setComponent(donation.getComponent());
-                setDelta(1);
-                setReason(MovementReason.DONATION);
-            }});
+            BankDtos.InventoryAdjustment adj = new BankDtos.InventoryAdjustment();
+            adj.setBloodType(donor.getBloodType());
+            adj.setComponent(donation.getComponent() != null ? donation.getComponent() : BloodComponent.WHOLE_BLOOD);
+            adj.setDelta(1);
+            adj.setReason(MovementReason.DONATION);
+            adj.setNotes("Donation collection verified for donor " + donor.getUser().getFullName());
+            adjustInventory(bankUser, adj);
 
             // If linked to a request, fulfill units
             BloodRequest request = donation.getRequest();

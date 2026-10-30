@@ -1,6 +1,5 @@
 package lk.bloodlink.service;
 
-import jakarta.persistence.EntityNotFoundException;
 import lk.bloodlink.config.JwtTokenProvider;
 import lk.bloodlink.dto.*;
 import lk.bloodlink.model.entity.*;
@@ -22,7 +21,7 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.HexFormat;
 import java.util.Optional;
-import java.util.UUID;
+
 
 @Slf4j
 @Service
